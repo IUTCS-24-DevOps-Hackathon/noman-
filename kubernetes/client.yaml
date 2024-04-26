@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: us-central1-docker.pkg.dev/prj-poc-001/gke-repo/quickstart-image
+          image: us-central1-docker.pkg.dev/host-staging-418429/gke-repo/quickstart-image
           ports:
             - containerPort: 3000
 
