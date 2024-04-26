@@ -1,0 +1,12 @@
+apiVersion: deploy.cloud.google.com/v1
+kind: DeliveryPipeline
+metadata:
+  name: hackathondeploy
+serialPipeline:
+  stages:
+  - targetId: hackathondeploy-target-1
+    profiles:
+    - target-1
+  - targetId: hackathondeploy-target-2
+    profiles:
+    - target-2
