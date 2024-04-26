@@ -7,4 +7,4 @@ metadata:
 description: prod
 requireApproval: true
 gke:
-  cluster: projects/prj-poc-001/locations/us-central1-c/clusters/cluster-1
+  cluster: projects/host-staging-418429/locations/us-central1-c/clusters/cluster-1
