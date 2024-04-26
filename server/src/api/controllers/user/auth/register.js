@@ -8,6 +8,7 @@ import geoip from 'geoip-lite';
 const { lookup } = geoip;
 
 export default async (req, res) => {
+  console.log(req.body)
   const { error } = validateRegister(req.body);
   if (error) {
     let code = '00025';
@@ -63,6 +64,14 @@ export default async (req, res) => {
     timezone: req.body.timezone,
     lastLogin: Date.now()
   });
+  // let user = new User({
+  //   email: req.body.email,
+  //   password: hashed,
+  //   username: req.body.fullname,
+  //   isVerified: false,
+  //   countryCode: geo == null ? 'US' : geo.country,
+  //   lastLogin: Date.now()
+  // });
 
   user = await user.save().catch((err) => {
     return res.status(500).json(errorHelper('00034', req, err.message));

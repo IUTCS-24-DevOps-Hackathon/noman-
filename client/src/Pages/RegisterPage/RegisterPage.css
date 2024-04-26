@@ -46,7 +46,7 @@
     outline: none;
     border-bottom: 1px solid grey;
 }
-.fullName,.phone,.mail,.password{
+.fullName,.phone,.mail,.password, .phoneNumber, .location{
     position: absolute;
     top: 50%;
     left: 20px;
