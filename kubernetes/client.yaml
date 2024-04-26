@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-deployment
+  name: client
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: my-app
+      app: client
   template:
     metadata:
       labels:
-        app: my-app
+        app: client
     spec:
       containers:
-        - name: my-container
+        - name: client
           image: us-central1-docker.pkg.dev/prj-poc-001/gke-repo/quickstart-image
           ports:
             - containerPort: 3000
@@ -24,10 +24,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-service
+  name: client-service
 spec:
   selector:
-    app: my-app
+    app: client
   ports:
     - protocol: TCP
       port: 3000
