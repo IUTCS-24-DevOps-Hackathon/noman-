@@ -41,9 +41,5 @@
   ],
   "author": "Bahrican Yesil",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/bahricanyesil/nodejs-starter-template/issues"
-  },
-  "homepage": "https://github.com/bahricanyesil/nodejs-starter-template#readme",
   "type": "module"
 }
