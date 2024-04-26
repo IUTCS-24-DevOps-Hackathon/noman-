@@ -19,7 +19,10 @@ const {
 export const port = PORT || 8000;
 export const jwtSecretKey = JWT_SECRET_KEY;
 export const refreshTokenSecretKey = REFRESH_TOKEN_SECRET_KEY;
-export const dbUri = DB_URI;
+// export const dbUri = DB_URI;
+
+export const dbUri =
+  "mongodb+srv://dpproject:dpproject123@dpproject.zv7zvv3.mongodb.net/?retryWrites=true&w=majority";
 export const awsAccessKey = AWS_ACCESS_KEY_ID;
 export const awsSecretAccessKey = AWS_SECRET_ACCESS_KEY;
 export const awsRegion = AWS_REGION;
