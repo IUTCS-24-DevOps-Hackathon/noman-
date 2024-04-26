@@ -12,9 +12,7 @@ const userSchema = new Schema({
   password: {
     type: String, required: true, select: false
   },
-  username: {
-    type: String, required: true, lowercase: true, unique: true
-  },
+
   name: {
     type: String, required: true
   },
@@ -22,7 +20,7 @@ const userSchema = new Schema({
       you can control the authority of users with the help of this field.*/
   type: {
     type: String,
-    enum: ['admin', 'user', 'reader', 'creator'],
+    enum: ['admin', 'seller', 'user'],
     default: 'user',
   },
   language: {
@@ -30,22 +28,10 @@ const userSchema = new Schema({
     enum: ['tr', 'en'],
     default: 'en',
   },
-  isPremium: {
-    type: Boolean, default: false
-  },
+
   //NOTE: You can change the gender options acc. to your needs in the app.
-  gender: {
-    type: String,
-    enum: ['male', 'female', 'other']
-  },
   countryCode: {
     type: String,
-  },
-  timezone: {
-    type: Number
-  },
-  birthDate: {
-    type: Date
   },
   photoUrl: {
     type: String,
@@ -62,15 +48,7 @@ const userSchema = new Schema({
     type: Boolean,
     required: true
   },
-  deviceId: {
-    type: String,
-  },
   //NOTE: You can add more options acc. to your need.
-  platform: {
-    type: String,
-    enum: ['Android', 'IOS'],
-    required: true
-  },
   //NOTE: In case the user delete its account, you can store its non-personalized information anonymously.
   deletedAt: {
     type: Date

@@ -8,6 +8,7 @@ import geoip from 'geoip-lite';
 const { lookup } = geoip;
 
 export default async (req, res) => {
+  console.log(req.body)
   const { error } = validateRegister(req.body);
   if (error) {
     let code = '00025';
@@ -31,7 +32,7 @@ export default async (req, res) => {
   const hashed = await hash(req.body.password, 10);
 
   const emailCode = generateRandomCode(4);
-  await sendCodeToEmail(req.body.email, req.body.name, emailCode, req.body.language, 'register', req, res);
+  await sendCodeToEmail(req.body.email, req.body.name, emailCode, 'en', 'register', req, res);
 
   let username = '';
   let tempName = '';
@@ -55,12 +56,8 @@ export default async (req, res) => {
     email: req.body.email,
     password: hashed,
     name: name,
-    username: username,
-    language: req.body.language,
-    platform: req.body.platform,
     isVerified: false,
     countryCode: geo == null ? 'US' : geo.country,
-    timezone: req.body.timezone,
     lastLogin: Date.now()
   });
 
@@ -69,8 +66,9 @@ export default async (req, res) => {
   });
 
   user.password = null;
-
+  console.log("Went Here")
   const confirmCodeToken = signConfirmCodeToken(user._id, emailCode);
+  console.log("Went FurtherHere")
 
   logger('00035', user._id, getText('en', '00035'), 'Info', req);
   return res.status(200).json({
