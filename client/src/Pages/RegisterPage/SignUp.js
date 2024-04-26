@@ -5,6 +5,7 @@ import {FiMail} from "react-icons/fi"
 import {RiLockPasswordLine} from "react-icons/ri"
 import { Link, useNavigate } from 'react-router-dom'
 import validation from './Validation'
+import axios from 'axios';
 
 const SignUp = () => {
 
@@ -13,22 +14,33 @@ const SignUp = () => {
     const [submit,setSubmit] =useState(false)
   
     const [data,setData] =useState({
-        fullname:"",
+        name:"",
         email:"",
         password:"",
-        confirmpassword:"",
     })
 
     const handleChange=(e)=>{
         const newObj={...data,[e.target.name]:e.target.value}
         setData(newObj)
+        console.log(newObj)
     }
  
-    const handleSignUp=(e)=>{
-        e.preventDefault()
-       setError(validation(data))
-       setSubmit(true)
-    }
+    const handleSignUp = async (e) => {
+        e.preventDefault();
+        setError(validation(data));
+        setSubmit(true);
+        
+        try {
+          
+          if (Object.keys(error).length === 0) {
+            const response = await axios.post('http://localhost:8000/api/user', data);
+            console.log(response.data); // Handle success response
+            navigate('/home');
+          }
+        } catch (error) {
+          console.error('Error:', error.response.data); // Handle error response
+        }
+      };
 
     useEffect(()=>{
         if(Object.keys(error).length === 0 && submit){
@@ -47,8 +59,8 @@ const SignUp = () => {
             <div className="inputBox">
                 <AiOutlineUser className='fullName'/>
                 <input type='text' 
-                        name="fullname" 
-                        id="fullname" 
+                        name="name" 
+                        id="name" 
                         onChange={handleChange}
                         placeholder='Full Name'
                 /> 
@@ -83,7 +95,6 @@ const SignUp = () => {
                 <input type="password" 
                         name="confirmpassword" 
                         id="confirmPassword" 
-                        onChange={handleChange}
                         placeholder='Confirm Password'
                 />
             </div>
