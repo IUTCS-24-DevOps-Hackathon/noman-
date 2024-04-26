@@ -6,4 +6,4 @@ metadata:
   labels: {}
 description: dev
 gke:
-  cluster: projects/host-staging-418429/locations/us-central1-c/clusters/primary
+  cluster: projects/host-staging-418429/locations/us-central1-a/clusters/primary
