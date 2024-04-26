@@ -17,7 +17,16 @@ services:
       - mongo_data:/data/db
     networks:
       - custom_network
-
+  web:
+    image: app_web:latest
+    build:
+      context: ./client
+    depends_on:
+      - mongo
+    ports:
+      - 3000:3000
+    networks:
+      - custom_network
   server:
     image: app_server:latest
     build:
@@ -25,7 +34,7 @@ services:
     depends_on:
       - mongo
     ports:
-      - 3000:3000
+      - 8000:8000
     networks:
       - custom_network
 
