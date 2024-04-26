@@ -56,12 +56,13 @@ export default async (req, res) => {
     email: req.body.email,
     password: hashed,
     name: name,
-    isVerified: false,
+    isVerified: true,
     countryCode: geo == null ? 'US' : geo.country,
     lastLogin: Date.now()
   });
 
   user = await user.save().catch((err) => {
+    console.log(err)
     return res.status(500).json(errorHelper('00034', req, err.message));
   });
 
