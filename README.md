@@ -5,4 +5,4 @@
 Setting up the two clusters
 One is for dev and another is for the deployment
 
-the piplline works in
+the pipline works in
